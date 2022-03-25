@@ -1,3 +1,5 @@
 forcelayout
 numpy
 matplotlib
+thefuzz
+python-Levenshtein
