@@ -23,8 +23,8 @@ def annotate_points(node, i):
 
 # Need to use the brute force algorithm on a dataset this small
 # (not recommended for larger datasets)
-layout = fl.draw_spring_layout(dataset=dataset,
-                               algorithm=fl.SpringForce,
-                               annotate=annotate_points)
+layout = fl.draw_spring_layout_animated(dataset=dataset,
+                                        algorithm=fl.SpringForce,
+                                        annotate=annotate_points)
 
 plt.show()
