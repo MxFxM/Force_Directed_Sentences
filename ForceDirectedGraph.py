@@ -1,5 +1,4 @@
 # other imports
-from operator import indexOf
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -7,21 +6,25 @@ import numpy as np
 import forcelayout as fl
 
 # Need a dataset to visualise
-dataset = np.array([[2, 1, 0],
-                    [2, 1, 1], 
-                    [3, 2, 1]])
+dataset = None
+with open("scores.csv", encoding='utf8') as scorefile:
+    dataset = np.loadtxt(
+        scorefile,
+        delimiter=',',
+    )
 
-names = ["first",
-         "second",
-         "third"]
+names = []
+with open("inputtext.txt", 'r') as textfile:
+    for line in textfile:
+        names.append(line)
 
 def annotate_points(node, i):
     return names[i]
 
 # Need to use the brute force algorithm on a dataset this small
 # (not recommended for larger datasets)
-layout = fl.draw_spring_layout_animated(dataset=dataset,
-                                        algorithm=fl.SpringForce,
-                                        annotate=annotate_points)
+layout = fl.draw_spring_layout(dataset=dataset,
+                               algorithm=fl.SpringForce,
+                               annotate=annotate_points)
 
 plt.show()
